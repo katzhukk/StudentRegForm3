@@ -1,8 +1,6 @@
-package tests;
-
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
@@ -15,8 +13,8 @@ public class TestBase {
         //Configuration.holdBrowserOpen = true;         /* Не дает закрыть тесту браузер. Нужно только для отладки */
     }
 
-    @AfterAll
-    static void afterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
+    @AfterEach
+    void afterEach() {
         WebDriverRunner.closeWebDriver();
     }
 }

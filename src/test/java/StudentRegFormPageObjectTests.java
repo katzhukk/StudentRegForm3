@@ -1,28 +1,27 @@
-package tests;
-
 import org.junit.jupiter.api.Test;
-
 import pages.RegistrationPage;
+import utils.RandomUtils;
 
-public class StudentRegFormTests extends TestBase{
-    RegistrationPage registrationPage = new RegistrationPage();
-    String firstName = "Kate",
-            lastName = "Zhukova",
-            userEmail = "kate@zhukova.ru",
-            userNumber = "8912345678",
-            dayOfBirth = "23",
-            monthOfBirth = "June",
-            yearOfBirth = "2000",
-            subjects = "Math",
-            hobbies = "Music",
-            gender = "Female",
-            picture = "StudentRegForm.jpg",
-            currentAddress = "Moscow, Pushkin street, 1",
-            state = "NCR",
-            city = "Delhi";
+public class StudentRegFormPageObjectTests extends TestBase {
+    private final RegistrationPage registrationPage = new RegistrationPage();
+
+    String  firstName = RandomUtils.getRandomFirstName(),
+            lastName = RandomUtils.getRandomLastName(),
+            userEmail = RandomUtils.getRandomEmail(),
+            gender = RandomUtils.getRandomGender(),
+            userNumber = RandomUtils.getRandomNumber(),
+            yearOfBirth = RandomUtils.getRandomYearOfBirth(),
+            monthOfBirth = RandomUtils.getRandomMonthOfBirth(),
+            dayOfBirth = RandomUtils.getRandomDayOfBirth(monthOfBirth, yearOfBirth),
+            subjects = RandomUtils.getRandomSubject(),
+            hobbies = RandomUtils.getRandomHobbies(),
+            picture = RandomUtils.getRandomPicture(),
+            currentAddress = RandomUtils.getRandomCurrentAddress(),
+            state = RandomUtils.getRandomState(),
+            city = RandomUtils.getRandomCity(state);
 
     @Test
-    void successfulRegistrasionTest() {
+    void successfulRegistrationTest() {
         registrationPage.openPage() /*Открытие сайта регистрации*/
                 /*Заполнение формы студента:*/
                 .setFirstName(firstName)
@@ -53,22 +52,8 @@ public class StudentRegFormTests extends TestBase{
     }
 
     @Test
-    void SubmitRegistrationTest() {
+    void unuccessfulRegistrationTest() {
         registrationPage.openPage() /*Открытие сайта регистрации*/
-                /*Заполнение формы студента:*/
-                .clickSubmit();
-
-        /*Проверка результатов*/
-        registrationPage.unsuccessfulRegistration();
-    }
-
-    @Test
-    void unsuccessfulRegistrationTest() {
-        registrationPage.openPage() /*Открытие сайта регистрации*/
-                /*Заполнение формы студента:*/
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setUserEmail(userEmail)
                 .clickSubmit();
 
         /*Проверка результатов*/

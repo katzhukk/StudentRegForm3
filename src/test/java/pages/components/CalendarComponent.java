@@ -1,0 +1,23 @@
+package pages.components;
+
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+
+public class CalendarComponent {
+    public void setDate(String day, String month, String year) {
+        $("#dateOfBirthInput").click();    /*Клик по Дате Рождения*/
+        $(".react-datepicker__year-select").$(byText(year)).click();
+        $(".react-datepicker__month-select").$(byText(month)).click();
+
+        $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
+/*
+        $("#dateOfBirthInput").click();
+$(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__month-select").$(byText(month)).click();
+        $(".react-datepicker__year-select").$(byText(year)).click();
+        $(".react-datepicker__day--023").click();
+        */
+    }
+}
