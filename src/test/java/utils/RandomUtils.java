@@ -1,4 +1,5 @@
 package utils;
+
 import com.github.javafaker.Faker;
 
 public class RandomUtils {
@@ -25,8 +26,8 @@ public class RandomUtils {
     }
 
     public static String getRandomMonthOfBirth() {
-        return faker.options().option("January","February","March","April","May","June",
-                "July","August","September","October","November","December");
+        return faker.options().option("January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December");
     }
 
     public static String getRandomYearOfBirth() {
@@ -34,14 +35,14 @@ public class RandomUtils {
     }
 
     public static String getRandomDayOfBirth(String month, String year) {
-        if(month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July")
-                || month.equals("August") || month.equals("October") || month.equals("December")){
+        if (month.equals("January") || month.equals("March") || month.equals("May") || month.equals("July")
+                || month.equals("August") || month.equals("October") || month.equals("December")) {
             return String.format("%02d", faker.number().numberBetween(1, 31));
         }
-        if(month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")){
+        if (month.equals("April") || month.equals("June") || month.equals("September") || month.equals("November")) {
             return String.format("%02d", faker.number().numberBetween(1, 30));
         }
-        if(month.equals("February") && (Integer.parseInt(year) % 4 == 0)){
+        if (month.equals("February") && (Integer.parseInt(year) % 4 == 0)) {
             return String.format("%02d", faker.number().numberBetween(1, 29));
         } else {
             return String.format("%02d", faker.number().numberBetween(1, 28));
@@ -49,8 +50,8 @@ public class RandomUtils {
     }
 
     public static String getRandomSubject() {
-        return faker.options().option("Accounting","Arts","Biology","Chemistry","Computer Science",
-                "Commerce","Civics","Economics","English","Hindi","History","Math","Social Studies","Physics");
+        return faker.options().option("Accounting", "Arts", "Biology", "Chemistry", "Computer Science",
+                "Commerce", "Civics", "Economics", "English", "Hindi", "History", "Math", "Social Studies", "Physics");
     }
 
     public static String getRandomHobbies() {
@@ -58,7 +59,7 @@ public class RandomUtils {
     }
 
     public static String getRandomPicture() {
-        return faker.options().option("StudentRegForm.jpg","StudentRegForm1.jpg","StudentRegForm2.jpg");
+        return faker.options().option("StudentRegForm.jpg", "StudentRegForm1.jpg", "StudentRegForm2.jpg");
     }
 
     public static String getRandomCurrentAddress() {
@@ -70,18 +71,18 @@ public class RandomUtils {
     }
 
     public static String getRandomCity(String state) {
-        if(state.equals("NCR")){
+        if (state.equals("NCR")) {
             return faker.options().option("Delhi", "Gurgaon", "Noida");
         }
-        if(state.equals("Uttar Pradesh")){
+        if (state.equals("Uttar Pradesh")) {
             return faker.options().option("Agra", "Lucknow", "Merrut");
         }
-        if(state.equals("Haryana")){
+        if (state.equals("Haryana")) {
             return faker.options().option("Karnal", "Panipat");
         }
-        if(state.equals("Rajasthan")){
+        if (state.equals("Rajasthan")) {
             return faker.options().option("Jaipur", "Jaiselmer");
-        } else{
+        } else {
             return "";
         }
     }

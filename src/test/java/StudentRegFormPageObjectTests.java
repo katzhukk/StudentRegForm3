@@ -5,7 +5,7 @@ import utils.RandomUtils;
 public class StudentRegFormPageObjectTests extends TestBase {
     private final RegistrationPage registrationPage = new RegistrationPage();
 
-    String  firstName = RandomUtils.getRandomFirstName(),
+    String firstName = RandomUtils.getRandomFirstName(),
             lastName = RandomUtils.getRandomLastName(),
             userEmail = RandomUtils.getRandomEmail(),
             gender = RandomUtils.getRandomGender(),
@@ -22,8 +22,7 @@ public class StudentRegFormPageObjectTests extends TestBase {
 
     @Test
     void successfulRegistrationTest() {
-        registrationPage.openPage() /*Открытие сайта регистрации*/
-                /*Заполнение формы студента:*/
+        registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)
@@ -38,7 +37,6 @@ public class StudentRegFormPageObjectTests extends TestBase {
                 .setCity(city)
                 .clickSubmit();
 
-        /*Проверка результатов*/
         registrationPage.checkResult("Student Name", firstName + " " + lastName)
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", gender)
@@ -52,11 +50,9 @@ public class StudentRegFormPageObjectTests extends TestBase {
     }
 
     @Test
-    void unuccessfulRegistrationTest() {
-        registrationPage.openPage() /*Открытие сайта регистрации*/
-                .clickSubmit();
+    void checkNegativeResult() {
+        registrationPage.openPage().clickSubmit();
 
-        /*Проверка результатов*/
-        registrationPage.unsuccessfulRegistration();
+        registrationPage.checkNegativeResult();
     }
 }

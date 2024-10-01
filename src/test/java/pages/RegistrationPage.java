@@ -15,7 +15,7 @@ public class RegistrationPage {
     private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
-            userNumberInput= $("#userNumber"),
+            userNumberInput = $("#userNumber"),
             genderWrapper = $("#genterWrapper"),
             dateOfBirthInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
@@ -28,9 +28,9 @@ public class RegistrationPage {
 
     private final CalendarComponent calendarComponent = new CalendarComponent();
     private final TableResults checkTableResults = new TableResults();
-    private final TableResults unsuccessfulRegistration = new TableResults();
+    private final TableResults checkNegativeResult = new TableResults();
 
-    public RegistrationPage openPage(){
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('#fixedban').remove()");
@@ -104,8 +104,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public void unsuccessfulRegistration() {
-        unsuccessfulRegistration.unsuccessfulRegistration();
+    public void checkNegativeResult() {
+        checkNegativeResult.checkNegativeResult();
     }
 
     public void clickSubmit() {
